@@ -51,12 +51,49 @@ const AutomationCard: React.FC = () => {
               { maxWidth: "sm", slideSize: "100%" },
             ]}
           >
-            {carouselItems.map((item) => {
-
+            {carouselItems.map((item, index) => {
               return (
-                <Carousel.Slide key={item.title} gap="xl">
-                  <img src={item.icon} alt={item.title} className="w-10" />
-                  <Text className="font-bold text-2xl text-center">
+                <Carousel.Slide
+                  key={item.title}
+                  gap="xl"
+                  className={index === 0 ? "" : "border-l-2 ml-4 pl-4"}
+                >
+                  <div
+                    className="bg-gray-300"
+                    style={{
+                      width: "100px",
+                      height: "70px",
+                      borderRadius: "30%",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        margin: "auto",
+                        marginTop: "auto",
+                        marginBottom: "auto",
+                      }}
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                        className="animate-spin"
+                      />
+                      {index < carouselItems.length - 1 && (
+                        <div className="border-dotted border-b-2 my-5">
+                          
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <Text className="font-bold text-2xl animate-bounce mt-5">
                     {item.title}
                   </Text>
                 </Carousel.Slide>
